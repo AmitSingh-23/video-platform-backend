@@ -1,16 +1,17 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Video platform backend: Express, MongoDB, JWT auth and Cloudinary uploads",
   "keywords": [
     "backend"
   ],
-  "license": "ISC",
-  "author": "amit",
+  "license": "MIT",
+  "author": "Amit Singh Bisht",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config src/index.js"
+    "dev": "nodemon -r dotenv/config src/index.js",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
