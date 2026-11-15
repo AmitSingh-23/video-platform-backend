@@ -10,7 +10,7 @@ const subscriptionsSchema = new mongoose.Schema({
 
         } 
     
-},{timeatamps:true});
+},{timestamps:true});
 
 
 
