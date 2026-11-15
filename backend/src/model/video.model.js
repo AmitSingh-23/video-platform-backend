@@ -22,19 +22,17 @@ const videoSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-        creator:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"User",
-            required:true,
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    views: {
+        type: Number,
+        default: 0,
+    }
+}, { timestamps: true });
 
-        },
-        views:{
-            type:number,
-            default:0,
-        }
+videoSchema.plugin(aggregatePaginate);
 
-
-    
-});
-videoSchema.plugin(mongoose.aggregatePaginate);
 export default mongoose.model("Video", videoSchema);
