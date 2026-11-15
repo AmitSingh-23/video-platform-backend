@@ -24,7 +24,7 @@
     "jwt-decode": "^4.0.0",
     "mongoose": "^9.6.3",
     "mongoose-aggregate-paginate-v2": "^1.1.4",
-    "multer": "^2.1.1"
+    "multer": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
