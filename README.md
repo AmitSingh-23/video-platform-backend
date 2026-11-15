@@ -10,7 +10,10 @@ A Node.js and Express backend I built to learn how production-style APIs are put
 - Passwords hashed with bcrypt; protected routes guarded by an auth middleware
 - Consistent `ApiError` and `ApiResponse` wrappers and an async handler
 
-Controllers for changing the password, reading the current user and updating the avatar and cover image are written but not yet connected to routes. Video and subscription models exist without endpoints.
+- Authenticated account routes: change password, read the current user, update name and email, replace the avatar or cover image
+- Uploads limited to JPEG, PNG or WebP images up to 5 MB, saved under random file names and removed from disk after upload
+
+Video and subscription models exist without endpoints yet.
 
 ## Routes
 
@@ -21,7 +24,12 @@ All routes are mounted under `/api/v1/user`.
 | POST | `/register` | No | Create a user (multipart form with `avatar`, optional `coverImage`) |
 | POST | `/login` | No | Log in and set token cookies |
 | POST | `/logout` | Yes | Clear the refresh token and cookies |
-| POST | `/refreshtoken` | No | Exchange a refresh token for a new access token |
+| POST | `/refreshtoken` | No | Exchange a refresh token for a new access and refresh token pair |
+| POST | `/change-password` | Yes | Change the password (`oldPassword`, `newPassword`) |
+| GET | `/current-user` | Yes | Return the logged-in user |
+| PATCH | `/update-account` | Yes | Update `fullName` and `email` |
+| PATCH | `/avatar` | Yes | Replace the avatar (multipart field `avatar`) |
+| PATCH | `/cover-image` | Yes | Replace the cover image (multipart field `coverImage`) |
 
 ## Project structure
 
@@ -45,7 +53,7 @@ npm install
 npm run dev
 ```
 
-Create `backend/.env` first with:
+Copy `backend/.env.example` to `backend/.env` and fill in the values:
 
 ```
 PORT=8000
@@ -59,6 +67,10 @@ CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 ```
+
+## License
+
+MIT
 
 ## Stack
 
